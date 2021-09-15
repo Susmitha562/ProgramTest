@@ -1,0 +1,27 @@
+<h3>Create a User new</h3>
+<div class="myDiv">
+<%= form_for @user, url: create_user_path do |f| %>
+  <div>
+  <label for="name">FirstName</label>
+  <%= f.text_field :first_name, placeholder: "firstname" %><br>
+  </div>
+
+  <div>
+  <label for="name">LastName</label>
+  <%= f.text_field :last_name, placeholder: "lastname" %><br>
+  </div>
+
+  <div>
+  <label for="name">Email</label>
+  <%= f.text_field :email, placeholder: "email" %><br>
+  </div>
+
+  <label for="name">DateofBirth</label>
+  <%= f.date_field :date_of_birth, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), class: 'form-control' %> <br>
+  <div>
+    <%= f.label :baby %>
+    <%= f.file_field :baby %>
+  </div><br>
+  <%= f.submit %>
+<% end %>
+</div>
