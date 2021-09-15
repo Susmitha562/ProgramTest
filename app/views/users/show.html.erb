@@ -1,10 +1,5 @@
 
 <h1> show useree</h1>
-<% if @users.present? %>
-  <% @users.each do |p| %>
-  <h4> name </h4>
-  <div><%= p.first_name %> </div>
-  <h4> lastname</h4>
-  <div><%= p.last_name %> </div>
-  <% end %>
-  <% end %>
+<p><%= @user.first_name %></p>
+  <p><%= @user.email %></p>
+  <%= link_to "Back", :back%>

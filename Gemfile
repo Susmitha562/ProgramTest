@@ -27,6 +27,7 @@ gem 'devise'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'carrierwave'
 gem 'will_paginate'
+gem 'apipie-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
+  apipie
   root to: "users#index"
   
   devise_for :users
-  controller :users do
-    get '/new_user' => :new, as: 'new_user'
-    get '/user/:id' => :show, as: 'show_user'
-    post '/create_user' => :create, as: 'create_user'
-  end
+  resources :users
+  # controller :users do
+  #   get '/new_user' => :new, as: 'new_user'
+  #   get '/user/:id' => :show, as: 'show_user'
+  #   post '/create_user' => :create, as: 'create_user'
+  #   delete '/user/:id' => :delete, as: 'delete_user' 
+  #   get '/user/:id' => :edit, as: 'edit_u'
+  # end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

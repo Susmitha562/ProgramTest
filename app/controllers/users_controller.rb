@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
    before_action :authenticate_user!
+  
+  api :GET,"/users", "This is inedx view of all"
   def index
-     @users = User.all.paginate(page: params[:page], per_page: 1)
+     @users = User.all.paginate(page: params[:page], per_page: 5)
     # render json: @users, each_serializer: UserSerializer
   end
-
+  api :POST,"/users", "This is create view of all"
   def create
     uploader = BabyUploader.new
     @user = User.new(first_name: params[:user][:first_name], last_name: params[:user][:last_name], email: params[:user][:email], baby: params[:user][:baby])
@@ -23,12 +25,13 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
+  api :GET,"/users", "This is new view of all"
   def new
     @user = User.new
   end
-
+  api :GET,"/users", "This is create edit of all"
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
@@ -38,13 +41,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
    # render json: @user, serializer: UserSerializer
   end
-
-  def delete
+  api :GET,"/users", "This is delete of all"
+  def destroy
+    @user = User.find_by(id: params[:id])
+    @user.delete
+    redirect_to root_path
   end
 
+  
   private 
 
   def user_params 
     params.permit(:first_name, :last_name, :email, :date_of_birth, :baby)
+  end
+
+  def current_user
+    @user ||= User.find_by(id: params[:user_id])
   end
 end
